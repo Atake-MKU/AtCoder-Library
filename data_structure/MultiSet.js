@@ -1,8 +1,9 @@
 class MultiSet {
-    constructor() {
+    constructor(arr = []) {
         this.map = new Map();
         this.zero = 0;
         this.cnt = 0;
+        for (const value of arr) this.add(value);
     }
     add(num) {
         const map = this.map;
@@ -29,7 +30,6 @@ class MultiSet {
         this.map.forEach((value, key) => newMultiSet.map.set(key, value));
         return newMultiSet;
     }
-    get cnt() { return this.cnt };
     get max() {
         let max = 0;
         for (const value of this.map.values()) if (max < value) max = value;
