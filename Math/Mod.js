@@ -20,11 +20,11 @@ const Mod = {
         }
     },
     // 逆元
-    modinv: function(a) {
+    inv: function(a) {
         return Mod.pow(a, Mod.mod - 2);
     },
     // 割算
     div: function(p, q) {
-        return Mod.mul(p, Mod.modinv(q));
+        return Mod.mul(p, Mod.inv(q));
     }
 }
