@@ -2,10 +2,11 @@ const Mod = {
     mod: 998244353,
     // Number型の範囲内での掛け算
     mul: function(a, b) {
+        a %= Mod.mod, b %= Mod.mod;
         const m = (...num) => num.reduce((a, b) => a * b % Mod.mod, 1);
-        const x = 1e6;
-        const a1 = Math.floor(a / x), a2 = a % x;
-        const b1 = Math.floor(b / x), b2 = b % x;
+        const x = 1 << 16;
+        const a1 = a >> 16, a2 = a & (x - 1);
+        const b1 = b >> 16, b2 = b & (x - 1);
         return (m(a1, b1, x, x) + m(a1 * b2 + b1 * a2, x) + m(a2, b2)) % Mod.mod;
     },
     // 累乗（繰り返し二乗法）
