@@ -7,7 +7,7 @@ function PrimeFactorization(num) {
             num /= n;
         }
     }
-    rslt.push(num);
+    if (num > 1) rslt.push(num);
     return rslt;
 }
 
