@@ -37,4 +37,6 @@ class SegmentTree {
             return this.fn(vl, vr);
         }
     }
+    // i番目(0-based)の値を取得
+    get = i => this.query(i, i + 1);
 }
