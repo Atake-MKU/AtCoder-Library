@@ -7,7 +7,7 @@ function GCD(...num) {
 // 最小公倍数 Least Common Multiple
 function LCM(...num) {
     const gcd = (a, b) => b > 0 ? gcd(b, a % b) : a;
-    return num.reduce((a, b) => a * b / gcd(a, b) / 1);
+    return num.reduce((a, b) => a * b / gcd(a, b));
 }
 
 // 約数全列挙
