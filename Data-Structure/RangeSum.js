@@ -1,14 +1,13 @@
 class RangeSum {
     constructor(arr) {
-        this.sum_array = [];
-        let tmp = 0;
-        for (const num of arr) {
-            tmp += num;
-            this.sum_array.push(tmp);
+        this.sum_array = [0];
+        for (let i = 0; i < arr.length; i++) {
+            const num = this.sum_array[i];
+            this.sum_array.push(num + arr[i]);
         }
     }
-    // l番目以上r番目未満の区間和を取得(0-indexed)
+    // l番目以上r番目未満の区間和を取得
     query(l, r) {
-        return this.sum_array[r - 1] - this.sum_array[l - 1];
+        return this.sum_array[r] - this.sum_array[l];
     }
 }
