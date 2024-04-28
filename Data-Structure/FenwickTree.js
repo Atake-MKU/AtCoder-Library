@@ -5,7 +5,7 @@ class FenwickTree {
     }
     add(i, x) {
         let bit = 1;
-        while (i <= arr.length) {
+        while (i < this.tree.length) {
             if (bit & i) this.tree[i] += x, i += bit;
             bit <<= 1;
         }
