@@ -1,8 +1,22 @@
 class FenwickTree {
     constructor(arr) {
-        const l = arr.length; this.tree = new Array(l + 1).fill(0);
-        for (let i = 0; i < l; i++) this.update(i, arr[i]);
+        this.tree = new Array(arr.length + 1).fill(0);
+        for (let i = 0; i < arr.length; i++) this.add(i + 1, arr[i]);
     }
-    update(i, v) { i++; while (i < this.tree.length) this.tree[i] += v, i += i & -i }
-    sum(i) { let t = 0; while (i > 0) t += this.tree[i], i -= i & -i; return t }
+    add(i, x) {
+        let bit = 1;
+        while (i <= arr.length) {
+            if (bit & i) this.tree[i] += x, i += bit;
+            bit <<= 1;
+        }
+    }
+    get(i) {
+        let rslt = 0;
+        let bit = 1;
+        while (i) {
+            if (bit & i) rslt += this.tree[i], i -= bit;
+            bit <<= 1;
+        }
+        return rslt;
+    }
 }
