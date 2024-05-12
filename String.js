@@ -19,3 +19,16 @@ function isKaibun(string) {
     }
     return rslt;
 }
+
+class Hash {
+    constructor(base, size) {
+        this.mod = 2n ** 61n - 1n;
+        this.hash = 0n;
+        this.size = BigInt(size + 1);
+        this.base = base;
+    }
+    add(str) {
+        this.hash = (this.hash * this.size + this.base[str]) % this.mod;
+        return this.hash;
+    }
+}
