@@ -22,10 +22,10 @@ function isKaibun(string) {
 
 class Hash {
     constructor(base, size) {
-        this.mod = 2n ** 61n - 1n;
-        this.hash = 0n;
-        this.size = BigInt(size + 1);
+        this.mod = 1e14 + 31;
+        this.hash = 0;
         this.base = base;
+        this.size = size + 1;
     }
     add(str) {
         this.hash = (this.hash * this.size + this.base[str]) % this.mod;
