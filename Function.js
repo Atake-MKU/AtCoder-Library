@@ -65,3 +65,40 @@ function findSumSequences(len, num) {
     }
     return rslt;
 }
+
+// グラフのサイクルを検出する関数
+function detect_cycle(size, nexs) {
+    function get_cycle() {
+        let visited = new Array(size).fill(false);
+        let parent = new Array(size).fill(false);
+        const list = [];
+        for (let i = 0; i < size; i++) {
+            if (visited[i]) continue;
+            const stack = [i];
+            while (stack.length) {
+                const now = stack.pop();
+                visited[now] = true;
+                parent[now] = i;
+                const nex = nexs[now];
+                if (visited[nex]) {
+                    if (parent[nex] === i) list.push(nex);
+                } else {
+                    stack.push(nex);
+                }
+            }
+        }
+        return list;
+    }
+    const list = get_cycle();
+    function identify_cycle(node) {
+        const line = [node];
+        while (nexs[node] !== line[0]) {
+            node = nexs[node];
+            line.push(node);
+        }
+        return line;
+    }
+    const arr = [];
+    for (const num of list) arr.push(identify_cycle(num));
+    return arr;
+}
