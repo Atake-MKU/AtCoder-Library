@@ -1,3 +1,25 @@
+// 配列の並び替え
+function allPermutations(line) {
+    const rslt = [];
+    let arr = [...line];
+    const n = arr.length;
+    while (1) {
+        rslt.push([...arr]);
+        let i = n - 2;
+        while (i >= 0 && arr[i] >= arr[i + 1]) i--;
+        if (i < 0) break;
+        let j = n - 1;
+        while (arr[j] <= arr[i]) j--;
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+        let l = i + 1, r = n - 1;
+        while (l < r) {
+            [arr[l], arr[r]] = [arr[r], arr[l]];
+            l++, r--;
+        }
+    }
+    return rslt;
+}
+
 // lower_bound
 function lower_bound(num, array) {
     let ok = array.length, ng = -1;
