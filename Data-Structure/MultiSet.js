@@ -35,4 +35,5 @@ class MultiSet {
         for (const value of this.map.values()) if (max < value) max = value;
         return max;
     }
+    get = num => this.map.get(num);
 }
